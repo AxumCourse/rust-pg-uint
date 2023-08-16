@@ -51,7 +51,7 @@ mod test {
         .await
         .unwrap();
         assert!(r.num.value() == i.value());
-        assert!(r.num.usinged() == i.usinged());
+        assert!(r.num.unsigned() == i.unsigned());
     }
 
     #[tokio::test]
@@ -68,8 +68,8 @@ mod test {
         .await
         .unwrap();
         assert!(r.num.value() == i.value());
-        assert!(r.num.usinged() == i.usinged());
-        println!("{} {}", r.num.value(), r.num.usinged());
+        assert!(r.num.unsigned() == i.unsigned());
+        println!("{} {}", r.num.value(), r.num.unsigned());
     }
 
     #[tokio::test]
@@ -86,8 +86,8 @@ mod test {
         .await
         .unwrap();
         assert!(r.num.value() == i.value());
-        assert!(r.num.usinged() == i.usinged());
-        println!("{} {}", r.num.value(), r.num.usinged());
+        assert!(r.num.unsigned() == i.unsigned());
+        println!("{} {}", r.num.value(), r.num.unsigned());
     }
 
     #[tokio::test]
@@ -98,8 +98,8 @@ mod test {
         assert!(r.is_some());
         let r = r.unwrap();
         assert!(r.num.value() == i.value());
-        assert!(r.num.usinged() == i.usinged());
-        println!("{} {}", r.num.value(), r.num.usinged());
+        assert!(r.num.unsigned() == i.unsigned());
+        println!("{} {}", r.num.value(), r.num.unsigned());
     }
 
     #[tokio::test]
@@ -107,7 +107,7 @@ mod test {
         let conn = get_conn().await;
         let ls = super::list(&conn).await.unwrap();
         for r in ls.iter() {
-            println!("{:?} - {}", r, r.num.usinged());
+            println!("{:?} - {}", r, r.num.unsigned());
         }
     }
 }

@@ -12,7 +12,7 @@ impl Uint {
     pub fn value(self) -> i32 {
         self.0
     }
-    pub fn usinged(self) -> u32 {
+    pub fn unsigned(self) -> u32 {
         self.0 as u32
     }
 }
@@ -37,14 +37,13 @@ impl From<u32> for Uint {
 
 impl Into<u32> for Uint {
     fn into(self) -> u32 {
-        self.usinged()
+        self.unsigned()
     }
 }
 
 #[derive(sqlx::FromRow, Clone, Deserialize, Serialize, Debug, Default)]
 pub struct Test {
     pub id: String,
-    #[serde(serialize_with = "uint_serialize")]
     pub num: Uint,
 }
 
@@ -75,12 +74,11 @@ impl Into<Test> for TestResp {
     }
 }
 
-
 fn uint_serialize<S>(i: &Uint, s: S) -> Result<S::Ok, S::Error>
 where
     S: Serializer,
 {
-    s.serialize_u32(i.usinged())
+    s.serialize_u32(i.unsigned())
 }
 
 #[derive(Debug, Serialize)]
