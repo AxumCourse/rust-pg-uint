@@ -1,0 +1,17 @@
+[package]
+name = "rust-pg-uint"
+version = "0.1.0"
+edition = "2021"
+authors = ["axum.rs <team@axum.rs>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/AxumCourse/rust-pg-uint"
+homepage = "https://axum.rs"
+description = "使用自定义类型实现 PostgreSQL 无符号整数并与 Rust 集成"
+
+[dependencies]
+tokio = { version = "1", features = ["full"]}
+axum = "0.6"
+serde = { version="1", features = ["derive"] }
+xid = "1"
+sqlx = { version = "0.7", features = [ "runtime-tokio" , "postgres"] }
